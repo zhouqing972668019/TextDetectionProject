@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2017 Baidu, Inc. All Rights Reserved.
+  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fadingEdge="vertical"
+    android:scrollbars="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/btn_eng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="文字识别-英文"
+            tools:ignore="HardcodedText" />
+        <Button
+            android:id="@+id/btn_chinese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="文字识别-中文"
+            tools:ignore="HardcodedText" />
+        <Button
+            android:id="@+id/btn_eng_binary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="文字识别-英文-二值化"
+            tools:ignore="HardcodedText" />
+        <Button
+            android:id="@+id/btn_chinese_binary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="文字识别-中文-二值化"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总图片数量："/>
+            <TextView
+                android:id="@+id/tv_picNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已识别数量："/>
+            <TextView
+                android:id="@+id/tv_recognizeNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="识别内容:"
+                />
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="识别耗时:"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>
