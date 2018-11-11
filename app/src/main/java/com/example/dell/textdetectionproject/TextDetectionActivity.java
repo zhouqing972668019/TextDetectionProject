@@ -1,10 +1,15 @@
 package com.example.dell.textdetectionproject;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TextDetectionActivity extends AppCompatActivity {
 
@@ -33,7 +38,30 @@ public class TextDetectionActivity extends AppCompatActivity {
         btn_eng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                List<String> fileNameList = FileUtil.getFileName(FileUtil.IMG_FILE_PATH);
+                tv_picNum.setText(fileNameList.size()+"");
+                StringBuilder fileContent = new StringBuilder();
+                for(String fileName:fileNameList){
+                    Bitmap bitmap = null;
+                    try {
+                        long startTime = System.currentTimeMillis();
+                        bitmap = TextRecognization.getBitmapFromPath(FileUtil.IMG_FILE_PATH + fileName,getContentResolver());
+                        List<String> textList = TextRecognization.getText(bitmap,TextRecognization.DEFAULT_LANGUAGE);
+                        System.out.println("textList:"+textList.toString());
+                        String textLine = "";
+                        for(String text:textList){
+                            textLine += text;
+                        }
+                        textLine += "\n";
+                        long endTime = System.currentTimeMillis();
+                        tv_result.setText(textLine);
+                        tv_time.setText(((endTime- startTime)/1000) + "");
+                        fileContent.append(textLine);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                FileUtil.writeStrToFile(fileContent.toString(),FileUtil.IMG_FILE_PATH);
             }
         });
     }

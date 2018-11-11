@@ -1,17 +1,21 @@
 package com.example.dell.textdetectionproject;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -115,6 +119,17 @@ public class TextRecognization {
             canvas.drawText(textList.get(i),r.left,r.top,paint);
         }
         return bitmap_temp;
+    }
+
+    public static Bitmap getBitmapFromPath(String imgPath,ContentResolver contentResolver) throws FileNotFoundException {
+        BitmapFactory.Options options=new BitmapFactory.Options();
+        //options.inSampleSize=(int)7.5; /*图片长宽方向缩小倍数*/
+        //options.inJustDecodeBounds=false;
+
+        File file = new File(imgPath);
+        Uri uri = Uri.fromFile(file);
+        Bitmap bitmap=BitmapFactory.decodeStream(contentResolver.openInputStream(uri), null, options);
+        return bitmap;
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.example.dell.textdetectionproject;
 
+import android.os.Environment;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,6 +15,10 @@ import java.util.List;
  */
 
 public class FileUtil {
+
+    // 照片路径
+    public static String IMG_FILE_PATH
+            = Environment.getExternalStorageDirectory() + "/BaiduOCRTest/";
 
     //获取某个文件夹下所有文件的名称
     public static List<String> getFileName(String path) {

@@ -45,7 +45,7 @@ public class ThirdActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 List<Rect> tempBoxes =TextRecognization.doOcr(bmp);
-                List<String> textList=TextRecognization.getText(bmp);
+                List<String> textList=TextRecognization.getText(bmp,TextRecognization.DEFAULT_LANGUAGE);
                 Bitmap bitmap_new = TextRecognization.getAnnotatedBitmap(bmp, tempBoxes,textList);
                 iv_image.setImageBitmap(bitmap_new);
             }
