@@ -18,7 +18,7 @@ public class FileUtil {
 
     // 照片路径
     public static String IMG_FILE_PATH
-            = Environment.getExternalStorageDirectory() + "/BaiduOCRTest/";
+            = Environment.getExternalStorageDirectory() + "/TessTwoPics/";
 
     //获取某个文件夹下所有文件的名称
     public static List<String> getFileName(String path) {

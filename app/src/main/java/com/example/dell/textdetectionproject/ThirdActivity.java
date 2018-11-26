@@ -3,7 +3,6 @@ package com.example.dell.textdetectionproject;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +13,6 @@ import android.widget.ImageView;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.OpenCVLoader;
-
-import java.util.List;
 
 public class ThirdActivity extends AppCompatActivity {
 
@@ -44,10 +41,10 @@ public class ThirdActivity extends AppCompatActivity {
         btn_run.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Rect> tempBoxes =TextRecognization.doOcr(bmp);
-                List<String> textList=TextRecognization.getText(bmp,TextRecognization.DEFAULT_LANGUAGE);
-                Bitmap bitmap_new = TextRecognization.getAnnotatedBitmap(bmp, tempBoxes,textList);
-                iv_image.setImageBitmap(bitmap_new);
+//                List<Rect> tempBoxes =TextRecognization.doOcr(bmp);
+//                List<String> textList=TextRecognization.getText(bmp,TextRecognization.DEFAULT_LANGUAGE);
+//                Bitmap bitmap_new = TextRecognization.getAnnotatedBitmap(bmp, tempBoxes,textList);
+//                iv_image.setImageBitmap(bitmap_new);
             }
         });
     }

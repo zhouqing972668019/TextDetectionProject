@@ -77,7 +77,7 @@ public class TextRecognization {
     }
 
     //bitmap的文字识别
-    public static List<String> getText(Bitmap bitmap,String language)
+    public static String getText(Bitmap bitmap,String language)
     {
         List<String> textList=new ArrayList<>();
         TessBaseAPI baseAPI=new TessBaseAPI();
@@ -85,16 +85,20 @@ public class TextRecognization {
         baseAPI.init(DATAPATH,language);
         bitmap=bitmap.copy(Bitmap.Config.ARGB_8888,true);
         baseAPI.setImage(bitmap);
-        List<Rect> tempBoxes=baseAPI.getWords().getBoxRects();
-        for(Rect r:tempBoxes)
-        {
-            baseAPI.setRectangle(r);
-            String text=baseAPI.getUTF8Text();
-            System.out.println("rect:"+r.toString()+",text:"+text);
-            textList.add(text);
-        }
+        String outputText = baseAPI.getUTF8Text();
+        baseAPI.end();
         bitmap.recycle();
-        return textList;
+//        List<Rect> tempBoxes=baseAPI.getWords().getBoxRects();
+//        for(Rect r:tempBoxes)
+//        {
+//            baseAPI.setRectangle(r);
+//            String text=baseAPI.getUTF8Text();
+//            System.out.println("rect:"+r.toString()+",text:"+text);
+//            textList.add(text);
+//        }
+//        bitmap.recycle();
+//        System.out.println("textAll:"+baseAPI.getUTF8Text());
+        return outputText;
     }
 
     //返回框了文字区域的bitmap
@@ -185,4 +189,6 @@ public class TextRecognization {
         }
 
     }
+
+
 }
